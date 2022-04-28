@@ -3,21 +3,20 @@ programa
 	
 	funcao inicio()
 	{
-		inteiro num[10], multi = 1, soma = 0
+		inteiro numeros[5]
 
-		para(inteiro i=0; i < 10; i++){
-			escreva("\nInsira um número: ")
-			leia(num[i])
+		para(inteiro i = 0; i < 5; i++){
+			escreva("\nInforme um número: ")
+			leia(numeros[i])
 
-			se(num[i]%2 == 0) {
-				multi = multi * num[i] 
-			} senao se(num[i]%2 != 0) {
-				soma += num[i]
+
+			se(numeros[i] == 2 ou numeros[i] == 3 ou numeros[i] == 5 ou numeros[i] == 7) {
+				escreva(numeros[i], " é primo")
+			}
+			se(numeros[i]%2 != 0 e numeros[i]%3 != 0 e numeros[i]%5 != 0 e numeros[i]%7 != 0) {
+				escreva(numeros[i], " é primo")
 			}
 		}
-
-		escreva("\nA multiplicação dos números pares é ",multi)
-		escreva("\nA soma dos números ímpares é ",soma)
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -25,7 +24,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 362; 
+ * @POSICAO-CURSOR = 231; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
