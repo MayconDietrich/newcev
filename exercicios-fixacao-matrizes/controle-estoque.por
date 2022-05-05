@@ -19,21 +19,12 @@ programa
 				caso 0: logic = 1
 				pare
 				caso 1: 
-				cadastros++
 					escreva("Insira o nome do veículo: ")
 					para(inteiro i=0; i <= cadastros; i++){
 						se(nomeVeiculos[i] == "") {
 							leia(nomeVeiculos[i])
 							cadastros++
 							pare
-						}senao {
-							se(cadastros != 0) {
-								leia(nomeVeiculos[cadastros-1])
-								pare	
-							}senao {
-								leia(nomeVeiculos[cadastros])
-								pare
-							}
 						}
 					}
 					indice++
@@ -64,17 +55,25 @@ programa
 					leia(codigo)
 					nomeVeiculos[codigo] = ""
 					estoque[codigo] = ""
+					saldoEstoque[codigo][0] = 0
+					saldoEstoque[codigo][1] = 0
+					saldoEstoque[codigo][2] = 0
 					escreva("Veículo retirado!\n")
 					//matriz
 					indice = codigo
+
 				pare
 				caso 7: 
 					escreva("Insira o código do veículo que irá ir para o estoque: ")
 					leia(codigo)
 					se(estoque[codigo] == "") {
 						estoque[codigo] = nomeVeiculos[codigo]
+						escreva("Insira a quatidade de veículos a serem colocados o estoque: ")
+						leia(entrada)
+						saldoEstoque[codigo][0] = entrada
+					}senao{
+						escreva("Código de vícuo não cadastrado!\n")
 					}
-					
 				pare
 			}
 		}
@@ -103,9 +102,9 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1013; 
+ * @POSICAO-CURSOR = 1519; 
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {nomeVeiculos, 7, 9, 12}-{estoque, 7, 29, 7};
+ * @SIMBOLOS-INSPECIONADOS = {saldoEstoque, 6, 20, 12}-{nomeVeiculos, 7, 9, 12}-{estoque, 7, 29, 7};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
