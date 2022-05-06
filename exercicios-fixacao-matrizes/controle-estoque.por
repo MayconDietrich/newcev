@@ -102,7 +102,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1519; 
+ * @POSICAO-CURSOR = 824; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {saldoEstoque, 6, 20, 12}-{nomeVeiculos, 7, 9, 12}-{estoque, 7, 29, 7};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
