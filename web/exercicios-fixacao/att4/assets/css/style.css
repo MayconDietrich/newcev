@@ -1,0 +1,59 @@
+:root {
+  font-family: 'Jura', sans-serif;
+}
+
+.body {
+  background-color: #2D3133;
+  color: #FFF;
+
+  display: flex;
+  padding: 1rem 5rem 0 5rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.img {
+  width: 50rem;
+}
+
+.desc {
+  text-align: justify;
+  width: 50rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: #00856F;
+  border-radius: 80px;
+  border: none;
+  /* padding: 16px 34px 16px 32px; */
+  color: #FFF;
+
+  width: 160px;
+  height: 50px;
+  margin-top: 7rem;
+}
+
+.font-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  transition: .2s;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  cursor: pointer;
+  transition: .1s;
+  background-color: #07705f;
+}
+
+.video {
+   width: 90vw;
+   height: 50vw;
+}
