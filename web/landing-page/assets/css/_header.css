@@ -1,0 +1,28 @@
+.header {
+  background-color: var(--bg-color);
+  height: 15rem;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  flex-direction: column;
+  font-family: var(--font-title);
+  padding: 1rem 0 2rem 0;
+}
+
+.header__logo {
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto;
+}
+
+.header__title {
+  font-size: 3rem;
+  color: #FFF;
+  line-height: 44px;
+}
+
+.header__title .span-title {
+  font-size: 3rem;
+  color: var(--title-color);
+  line-height: 50px; 
+}

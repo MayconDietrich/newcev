@@ -1,0 +1,30 @@
+.footer {
+  background-color: var(--bg-color);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 10rem;
+  width: 100%;
+  position: absolute;
+}
+
+.footer__desc {
+  margin-left: 2rem;
+
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 17px;
+  font-weight: bold;
+
+  color: #FFF;
+}
+
+.footer-div {
+  margin-right: 2rem;
+  display: flex;
+  width: 5rem;
+  justify-content: space-between;
+}
