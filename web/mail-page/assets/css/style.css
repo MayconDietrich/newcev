@@ -1,0 +1,110 @@
+.header {
+  background-color: rgb(23, 76, 79);
+  height: 20rem;
+  padding: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 15rem;
+  height: 15rem;
+}
+
+.header__title {
+  margin-left: 2rem;
+  font-size: 2rem;
+}
+
+.header-list {
+  display: block;
+  width: 12rem;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+}
+
+.list-icon {
+  font-size: .9rem;
+  color: #FFF;
+}
+
+.main {
+  padding-top: 2rem;
+  background-color: #FDFDFD;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  flex-wrap: wrap;
+}
+
+.main-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: rgb(23, 76, 79);
+  width: 100%;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+}
+
+.main-div {
+  width: 21rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem 2rem;
+  margin: 0 auto;
+}
+
+.shoe {
+  width: 15rem;
+  height: 15rem;
+  background-position: center;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.txt {
+  text-align: justify;
+  margin-top: 1rem;
+}
+
+.btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #FFF;
+  background-color: rgb(23, 76, 79);
+  border-radius: 5px;
+  border: none;
+  padding: 1rem;
+  width: 8rem;
+  transition: 500ms;
+}
+
+.btn:hover {
+  transition: 500ms;
+  cursor: pointer;
+  background-color: rgb(15, 61, 63);
+}
+
+.footer {
+  margin-top: 3rem;
+  background-color: rgb(23, 76, 79);
+  height: 10rem;
+  display: flex;
+  color: #FFF;
+  align-items: center;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.footer-desc {
+  margin-left: 2rem;
+}
