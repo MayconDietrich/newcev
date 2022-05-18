@@ -1,0 +1,44 @@
+body {
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.text {
+  width: 100%;
+  text-align: center;
+}
+
+.header, .main, .footer {
+  width: 80%;
+  border: 1px solid pink;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.img {
+  width: 4rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  font-weight: 700;
+}
+
+.list-item {
+  margin-right: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
