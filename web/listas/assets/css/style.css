@@ -18,6 +18,7 @@ body {
 
 .img {
   width: 4rem;
+  cursor: pointer;
 }
 
 .header {
@@ -39,6 +40,79 @@ body {
   margin-right: 1rem;
 }
 
-a {
+.list-item-a {
   text-decoration: none;
+  color: pink;
+  transition: .1s;
+}
+
+.list-item-a:hover {
+  color: rgb(252, 112, 135);
+  transition: .1s;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.link-footer {
+  color: rgb(255, 132, 153);
+}
+
+.main {
+  display: flex;
+  padding: 2.375rem;
+}
+
+.desc {
+  text-align: left;
+  line-height: 1.5rem;
+}
+
+.section {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-around;
+}
+
+.btn {
+  background-color: rgb(252, 112, 135);
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 5px;
+  border: none;
+  color: #FFF;
+  padding: 1rem;
+  width: 8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  transform: .2s;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(255, 132, 153);
+  transform: .2s;
+}
+
+.bg-section {
+  width: 30rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1.5rem;
+}
+
+.fa-brands {
+  color: rgb(255, 132, 153);
+  margin-right: .5rem;
+}
+
+.fa-brands:hover {
+  color: rgb(255, 112, 153);
+  cursor: pointer;
 }

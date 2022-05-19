@@ -1,0 +1,11 @@
+:root {
+  --bg-color: #F05C54;
+  --bg-color2: #FFFFFD;
+  --bg-div: #457D97;
+  
+  --title-color: #423431;
+  --text-color: #6A6B5F;
+
+  --font-title: 'Oleo Script', cursive;;
+  --font-text: 'Inter', sans-serif;
+}
