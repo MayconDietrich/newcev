@@ -2,6 +2,9 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   font-family: 'Open Sans', sans-serif;
+  background-image: url(https://i.pinimg.com/736x/bf/d7/a4/bfd7a447682fec27beea68a8201656eb.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .text {
@@ -27,6 +30,7 @@ body {
   padding-inline: 5rem;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+  background-color: #FFF;
 }
 
 .list {
@@ -64,6 +68,7 @@ body {
 .main {
   display: flex;
   padding: 2.375rem;
+  background-color: #FFF;
 }
 
 .desc {
@@ -105,6 +110,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 2rem 1.5rem;
+  background-color: #FFF;
 }
 
 .fa-brands {
@@ -113,6 +119,39 @@ body {
 }
 
 .fa-brands:hover {
-  color: rgb(255, 112, 153);
+  /* color: rgb(255, 112, 153); */
   cursor: pointer;
+}
+
+.fa-instagram:hover {
+  color: #d20058;
+}
+
+.fa-facebook-f:hover {
+  color: #3a5796;
+}
+
+.fa-twitter:hover {
+  color: #1c9cea;
+}
+
+.awa {
+  margin: 1rem 0;
+  line-height: 2rem;
+  background-image: url(https://i.pinimg.com/originals/75/42/84/754284e0ba9246221123c1d6d2f47dcd.jpg);
+  background-size: 150%;
+  background-position: center;
+  width: 10rem;
+  padding: .5rem;
+  font-weight: bold;
+  font-size: .9rem;
+}
+
+.awa-title {
+  font-size: 1.5rem;
+}
+
+.awa li {
+  list-style: circle;
+  margin-left: 2.5rem;
 }
