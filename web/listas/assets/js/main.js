@@ -1,20 +1,3 @@
-// Buscando elementos dentro da página html
-// getElementById busca o elemento pelo ID
-
-// Buscando pela tag, querySelectorAll retorna sempre um aarray, querySelector rertorna o primeiro elemento que ele encontrar
-// const inputs = document.querySelectorAll('input');
-
-// const social = document.querySelector('.social')
-
-// // Pegando elemento pelo índice
-// console.log('inputs', inputs[2]);
-// console.log('social', social);
-
-  ///////////
- ////crazy//
-///////////
-
-
 const btnSendMsg = document.getElementById('btn-send-msg');
 
 const messages = [];
@@ -35,15 +18,17 @@ function addMsg(event) {
   }
 
 
-  // push adiciona um elemento no final do array
-  messages.push(message);
+  if(messages.length < 3) {
+     // push = método de um vetor, adiciona um elemento no final do array
+    messages.push(message);
 
-  document.getElementById('form').reset();
-  console.log(message)
-  console.log('imprimir vetor', messages);
+    // pegando o formulario e utilizando um método de form que é o reset
+    document.getElementById('form').reset();
+    console.log(message)
+    console.log('imprimir vetor', messages);
+  }else {
+    alert('nao vai n haha')
+  }
 }
-
-
-
 
 btnSendMsg.addEventListener('click', addMsg)
