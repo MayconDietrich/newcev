@@ -31,7 +31,7 @@ let username = 'Maycon';
 
 // Primeiro método de criar uma função
 let somaValores = function () {
-  console.log('mamaozinho soma');
+  console.log('soma');
 }
 
 // Chamar/invocar/conjurar/sumonar/acionar/spawnar a variável
@@ -41,7 +41,7 @@ somaValores();
 // Named funtion
 
 function subtraiValores() {
-  console.log('mamaozinho subtrai')
+  console.log('subtrai')
 }
 
 subtraiValores()
@@ -55,6 +55,14 @@ const carro = {
   }
 }
 
-carro.andar();
+carro.andar();//chamando
+
+// arrow functions 3° método
+
+const multiplicaValores = () => {
+  console.log('multiplicar valores', multiplicaValores)
+}
+
+multiplicaValores();
 
 
