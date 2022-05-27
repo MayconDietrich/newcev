@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Lista de mensagens</title>
+</head>
+<body>
+  
+  <main class="container">
+    <h1 class="container__title">Adicionar Mensagem</h1>
+
+    <form class="form-message" id="form-message">
+      <label for="from">De:</label>
+      <input required autocomplete="off" id="from" type="text">
+
+      <label for="to">Para:</label>
+      <input required autocomplete="off" id="to" type="text">
+
+      <label for="message">Mensagem:</label>
+      <textarea id="message" cols="40" rows="8"></textarea>
+
+      <button type="button" id="addBtn">Adicionar</button>
+    </form>
+
+    <section id="section-messages">
+      <h2 class="section__title">Mensagens:</h2>
+    </section>
+  </main>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
