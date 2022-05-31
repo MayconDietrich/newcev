@@ -1,9 +1,45 @@
 const btnAddMsg = document.getElementById('addBtn');
-console.log(btnAddMsg);
+let countRow = 0;
+
+let editCheck = false;
+
+let editId = '';
+
+
+function onClickEdit(lineEditing) {
+  const tBody = document.getElementById('table-body');  
+  console.log('Line Editing', lineEditing.childNodes);
+
+  // ForEach é o método que percorre todos os elementos de um vetor
+  // lineEditing.childNodes.forEach((element, index) => {
+  //   console.log('elemento:', element);
+  //   console.log('index:', index);
+  // })
+
+  ///////////forma menos pog/////////////////////
+  // const fromValue = lineEditing.childNodes[0].innerHTML;
+  // const toValue = lineEditing.childNodes[1].innerHTML;
+  // const message = lineEditing.childNodes[2].innerHTML;
+
+  // Desestruturação de arrays - método mais poggers
+  const [fromValue, toValue, message] = lineEditing.childNodes;
+  console.log('fromValue:', fromValue.innerHTML);
+  console.log('toValue:', toValue.innerHTML);
+  console.log('message:', message.innerHTML);
+
+  editId = lineEditing.id;
+
+  document.getElementById('from').value = fromValue.innerHTML;
+  document.getElementById('to').value = toValue.innerHTML;
+  document.getElementById('message').innerHTML = message.innerHTML;
+  editCheck = true;
+}
 
 function addMsg(event) {
   event.preventDefault();
   const form = document.getElementById('form-message');
+  const table = document.getElementById('table');
+  const tableBody = document.getElementById('table-body');
 
   const inputFrom = document.getElementById('from');
   const inputTo = document.getElementById('to');
@@ -49,6 +85,54 @@ function addMsg(event) {
   li.innerHTML = `De: ${message.from} Para: ${message.to} Mensagem ${message.message}`;
   ul.appendChild(li);
 
+  const tdFrom = document.createElement('td');
+  const tdTo = document.createElement('td');
+  const tdMsg = document.createElement('td');
+  const tdBtns = document.createElement('td')
+  const tr = document.createElement('tr');
+
+  const iconRemove = document.createElement('i');
+  iconRemove.setAttribute('class', 'icon fas fa-trash');
+  iconRemove.setAttribute('style', 'cursor:pointer');
+  tdBtns.appendChild(iconRemove);
+
+  const iconEdit = document.createElement('i');
+  iconEdit.setAttribute('class', 'icon fa-solid fa-pencil');
+  iconEdit.setAttribute('style', 'cursor:pointer');
+  tdBtns.appendChild(iconEdit);
+
+
+  if(editCheck == true) {
+    console.log('mamaozinho');
+    console.log(editId)
+
+    const trEdit = document.getElementById(editId);
+    console.log(trEdit);
+
+    trEdit.firstChild.innerHTML = message.from;
+    trEdit.children[1].innerHTML = message.to;
+    trEdit.children[2].innerHTML = message.message;
+
+    editCheck = false;
+
+  }else {
+    tdFrom.innerHTML = `${message.from}`;
+    tr.appendChild(tdFrom);
+    tdTo.innerHTML = `${message.to}`;
+    tr.appendChild(tdTo);
+    tdMsg.innerHTML = `${message.message}`;
+    tr.appendChild(tdMsg);
+  
+    tr.appendChild(tdBtns);
+  
+    tr.setAttribute('id', `line${countRow}`);
+    tableBody.appendChild(tr);
+    countRow++;
+  
+    iconEdit.setAttribute('onclick', `onClickEdit(${tdBtns.parentElement.id});`);
+    console.log('ID: ', tdBtns.parentElement.id);
+  }
+  document.getElementById('form-message').reset();
 }
 
 btnAddMsg.addEventListener('click', addMsg);

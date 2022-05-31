@@ -7,13 +7,14 @@ body {
 .container__title {
   text-align: center;
   font-size: 1.5rem;
+  margin-top: 1rem;
   font-weight: bold;
   color: var(--blue);
 }
 
 .form-message {
   display: grid;
-  width: 50%;
+  width: 30rem;
   margin: 0 auto;
   margin-top: 2rem;
   border: 1px solid var(--pink);
@@ -29,6 +30,7 @@ body {
 .form-message textarea {
   border: 1px solid #CCC;
   margin-top: .2rem;
+  resize: none;
 }
 
 #addBtn {
@@ -51,4 +53,50 @@ body {
   font-weight: bold;
   color: var(--blue);
   margin-top: 2rem;
+}
+
+@media (max-width: 425px) {
+  .form-message {
+    width: 90%;
+  }
+} 
+
+ul {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--pink);
+}
+
+li {
+  margin-bottom: .5rem;
+}
+
+table {
+  margin: 0 auto;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+table thead {
+  font-weight: bold;
+  font-size: .9rem;
+}
+
+table tr {
+  line-height: 1.5rem;
+}
+
+th, td {
+  border: 1px solid var(--pink);
+  padding: .5rem;
+}
+
+th {
+  width: 5rem;
+  text-align: left;
+}
+
+.icon {
+  margin-left: 1rem;
 }
