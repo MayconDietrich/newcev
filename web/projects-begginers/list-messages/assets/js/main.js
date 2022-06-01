@@ -2,7 +2,7 @@ const btnAddMsg = document.getElementById('addBtn');
 let countRow = 0;
 
 let editCheck = false;
-
+let removeUndo = '';
 let editId = '';
 
 
@@ -33,6 +33,11 @@ function onClickEdit(lineEditing) {
   document.getElementById('to').value = toValue.innerHTML;
   document.getElementById('message').innerHTML = message.innerHTML;
   editCheck = true;
+}
+
+function onClickRemove(lineEditing) {
+  removeUndo = lineEditing;
+  lineEditing.remove();
 }
 
 function addMsg(event) {
@@ -93,13 +98,25 @@ function addMsg(event) {
 
   const iconRemove = document.createElement('i');
   iconRemove.setAttribute('class', 'icon fas fa-trash');
-  iconRemove.setAttribute('style', 'cursor:pointer');
+  iconRemove.setAttribute('style', 'cursor:pointer; margin-inline: 1rem;');
   tdBtns.appendChild(iconRemove);
 
   const iconEdit = document.createElement('i');
   iconEdit.setAttribute('class', 'icon fa-solid fa-pencil');
-  iconEdit.setAttribute('style', 'cursor:pointer');
+  iconEdit.setAttribute('style', 'cursor:pointer; margin-inline: 1rem;');
   tdBtns.appendChild(iconEdit);
+
+  const arrowUp = document.createElement('i');
+  arrowUp.setAttribute('class', 'icon fa-solid fa-arrow-up');
+  arrowUp.setAttribute('style', 'cursor:pointer');
+  arrowUp.setAttribute('title', 'mover acima');
+  tdBtns.appendChild(arrowUp);
+
+  const arrowDown = document.createElement('i');
+  arrowDown.setAttribute('class', 'icon fa-solid fa-arrow-down');
+  arrowDown.setAttribute('style', 'cursor:pointer; margin-inline: 1rem;');
+  arrowDown.setAttribute('title', 'mover acima');
+  tdBtns.appendChild(arrowDown);
 
 
   if(editCheck == true) {
@@ -130,9 +147,18 @@ function addMsg(event) {
     countRow++;
   
     iconEdit.setAttribute('onclick', `onClickEdit(${tdBtns.parentElement.id});`);
+    iconRemove.setAttribute('onclick', `onClickRemove(${tdBtns.parentElement.id});`);
     console.log('ID: ', tdBtns.parentElement.id);
   }
   document.getElementById('form-message').reset();
 }
 
 btnAddMsg.addEventListener('click', addMsg);
+
+const btnUndo = document.getElementById('undo');
+
+btnUndo.addEventListener('click', function() {
+  const tableBody = document.getElementById('table-body');
+  tableBody.appendChild(removeUndo);
+    
+})
