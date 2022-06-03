@@ -1,3 +1,4 @@
+
 const btnAddMsg = document.getElementById('addBtn');
 let countRow = 0;
 
@@ -40,6 +41,51 @@ function onClickRemove(lineEditing) {
   lineEditing.remove();
 }
 
+  function onClickMoveDown(row) {
+    const nodes = document.getElementById('table-body').childNodes;
+
+    //o primeiro parametro do forEach o vetor e o seguno é a posição
+    nodes.forEach((rowItem, index) => {
+      if (rowItem?.id === row.id) {
+        indexRow = index - 1;
+      }
+    });
+
+    moveLine('down');
+  }
+
+  function onClickMoveUp(row) {
+    const nodes = document.getElementById('table-body').childNodes;
+
+    nodes.forEach((rowItem, index) => {
+      if (rowItem?.id === row.id) {
+        indexRow = index - 1;
+      }
+    });
+          
+    moveLine('up');
+  }
+
+  function moveLine(direction) {
+    const rows = document.getElementById('table-body').rows;
+    const parent = rows[indexRow].parentNode;
+
+    if (direction === 'up') {
+      if ( indexRow  >= 1) {
+        parent.insertBefore(rows[indexRow],rows[indexRow - 1]);
+
+        indexRow--;
+      }
+    }
+
+    if (direction === 'down'){
+      if(indexRow < rows.length -1){
+        parent.insertBefore(rows[indexRow + 1],rows[indexRow]);
+        indexRow++;
+      }
+    }
+  }
+
 function addMsg(event) {
   event.preventDefault();
   const form = document.getElementById('form-message');
@@ -73,7 +119,7 @@ function addMsg(event) {
     to: inputTo.value,
     message: textearea.value
   }
-  console.log(message);
+  // console.log(message);
   form.reset();
 
   const sectionMsg = document.getElementById('section-messages');
@@ -98,24 +144,24 @@ function addMsg(event) {
 
   const iconRemove = document.createElement('i');
   iconRemove.setAttribute('class', 'icon fas fa-trash');
-  iconRemove.setAttribute('style', 'cursor:pointer; margin-inline: 1rem;');
+  iconRemove.setAttribute('style', 'cursor:pointer; margin-inline: .2rem;');
   tdBtns.appendChild(iconRemove);
 
   const iconEdit = document.createElement('i');
   iconEdit.setAttribute('class', 'icon fa-solid fa-pencil');
-  iconEdit.setAttribute('style', 'cursor:pointer; margin-inline: 1rem;');
+  iconEdit.setAttribute('style', 'cursor:pointer; margin-inline: .2rem;');
   tdBtns.appendChild(iconEdit);
 
   const arrowUp = document.createElement('i');
   arrowUp.setAttribute('class', 'icon fa-solid fa-arrow-up');
-  arrowUp.setAttribute('style', 'cursor:pointer');
+  arrowUp.setAttribute('style', 'cursor:pointer; margin-inline: .2rem;');
   arrowUp.setAttribute('title', 'mover acima');
   tdBtns.appendChild(arrowUp);
 
   const arrowDown = document.createElement('i');
   arrowDown.setAttribute('class', 'icon fa-solid fa-arrow-down');
-  arrowDown.setAttribute('style', 'cursor:pointer; margin-inline: 1rem;');
-  arrowDown.setAttribute('title', 'mover acima');
+  arrowDown.setAttribute('style', 'cursor:pointer; margin-inline: .2rem;');
+  arrowDown.setAttribute('title', 'mover abaixo');
   tdBtns.appendChild(arrowDown);
 
 
@@ -148,7 +194,9 @@ function addMsg(event) {
   
     iconEdit.setAttribute('onclick', `onClickEdit(${tdBtns.parentElement.id});`);
     iconRemove.setAttribute('onclick', `onClickRemove(${tdBtns.parentElement.id});`);
-    console.log('ID: ', tdBtns.parentElement.id);
+    arrowDown.setAttribute('onclick', `onClickMoveDown(${tdBtns.parentElement.id});`);
+    arrowUp.setAttribute('onclick', `onClickMoveUp(${tdBtns.parentElement.id});`);
+    // console.log('ID: ', tdBtns.parentElement.id);
   }
   document.getElementById('form-message').reset();
 }

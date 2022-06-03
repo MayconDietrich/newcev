@@ -1,0 +1,63 @@
+@import url(_var.css);
+
+body {
+  font-family: var(--font);
+}
+
+.main {
+  background-image: url(../img/bg-img.svg);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 100vh;
+
+  display: flex;
+  justify-content: right;
+}
+
+.section-form {
+  width: 50%;
+  height: 100vh;
+
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+
+  padding: 8rem 5rem;
+}
+
+.label {
+  margin: 2rem 0 .2rem 0;
+}
+
+.form input {
+  width: 16rem;
+  padding: .8rem;
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--font-color)
+}
+
+.form-btn {
+  padding: .5rem;
+  width: 18rem;
+  margin-top: 1.5rem;
+
+  cursor: pointer;
+
+  font-family: var(--font);
+  background-color: #EB8028;
+  border: none;
+}
+
+.desc {
+  font-size: .8rem;
+  font-weight: 100;
+  margin-top: .5rem;
+}

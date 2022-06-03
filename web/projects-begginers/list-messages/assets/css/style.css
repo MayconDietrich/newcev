@@ -93,12 +93,12 @@ th, td {
 }
 
 th {
-  width: 5rem;
+  width: 7rem;
   text-align: left;
 }
 
 .icon {
-  margin-left: 1rem;
+  margin-inline: .5rem;
 }
 
 .undo {
