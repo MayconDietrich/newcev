@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500;900&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/3f7112469b.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <title>PDW | Home</title>
@@ -15,31 +16,61 @@
 
   <main class="main">
     <section class="section-form">
-      <form class="form">
+      <form class="form" id="form">
         <label class="label" for="name">Nome:</label>
-        <input required id="name" type="text" placeholder="nome">
+        <input autocomplete="off" required id="name" type="text" placeholder="nome">
 
         <label class="label" for="surname">Sobrenome:</label>
-        <input required id="surname" type="text" placeholder="sobrenome">
+        <input autocomplete="off" required id="surname" type="text" placeholder="sobrenome">
 
         <label class="label" for="address">Endereço:</label>
-        <input required id="address" type="text" placeholder="Rua exemplo, Bairro Exemplo, 123">
+        <input autocomplete="off" required id="address" type="text" placeholder="Rua exemplo, Bairro Exemplo, 123">
 
-        <label class="label" for="naaddressAditional">Complemento de endereço:</label>
-        <input required id="naaddressAditional" type="text" placeholder="exemplo">
+        <label class="label" for="addressAditional">Complemento de endereço:</label>
+        <input autocomplete="off" required id="addressAditional" type="text" placeholder="exemplo">
 
         <label class="label" for="phone">Telefone:</label>
-        <input required id="phone" type="text" placeholder="+551234567890">
+        <input autocomplete="off" required id="phone" type="text" placeholder="+551234567890">
 
         <label class="label" for="email">E-mail para contato:</label>
-        <input required id="email" type="text" placeholder="emailExemplo@email.com">
+        <input autocomplete="off" required id="email" type="text" placeholder="emailExemplo@email.com">
 
-        <button type="button" class="form-btn">Enviar</button>
+        <button type="button" class="form-btn" onclick="sendMsg(event)">Enviar</button>
         <p class="desc">fiudsahewusahbidusahfiuewa adba</p>
       </form>
     </section>
+    
+    <button class="openModal" id="btnModal" onclick="openModal(event)">Abrir cadastros</button>
+
+    <section id="modal" class="section-modal hide">
+      <div class="modal-content">
+        <span id="close" class="close">&times;</span>
+        <h2>Lista de cadastros: </h2>
+
+        <table class="table" id="table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Sobrenome</th>
+              <th>Endereço</th>
+              <th>Complemento de endereço</th>
+              <th>Telefone</th>
+              <th>email</th>
+            </tr>
+          </thead>
+          <tbody id="table-body" class="table-body">
+          </tbody>
+          
+        </table>
+      </div>
+    </section>
+
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider round"></span>
+    </label>
   </main>
   
-  
+  <script src="./assets/js/main.js"></script>
 </body>
 </html>
