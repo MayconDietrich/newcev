@@ -14,8 +14,8 @@
 </head>
 <body>  
 
-  <main class="main">
-    <section class="section-form">
+  <main class="main" id="main">
+    <section class="section-form" id="sec-form">
       <form class="form" id="form">
         <label class="label" for="name">Nome:</label>
         <input autocomplete="off" required id="name" type="text" placeholder="nome">
@@ -35,8 +35,8 @@
         <label class="label" for="email">E-mail para contato:</label>
         <input autocomplete="off" required id="email" type="text" placeholder="emailExemplo@email.com">
 
-        <button type="button" class="form-btn" onclick="sendMsg(event)">Enviar</button>
-        <p class="desc">fiudsahewusahbidusahfiuewa adba</p>
+        <button id="form-btn" type="button" class="form-btn" onclick="sendMsg(event)">Enviar</button>
+        <p class="desc">&copy; fiudsahewusahbidusahfiuewa adba</p>
       </form>
     </section>
     
@@ -65,9 +65,9 @@
       </div>
     </section>
 
-    <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
+    <label class="switch" id="changeMode">
+      <i id="light" class="fas fa-sun fa-2x"></i>
+      <i id="dark" class="fa-solid fa-moon fa-2x"></i>
     </label>
   </main>
   

@@ -3,8 +3,8 @@ let edit = false;
 let allRegisters = [];
 function onloadAddInfos() {
   x=0;
-  let recordOnload = 'record' + x;
-  let recordActual = localStorage.getItem(recordOnload);
+  let registerOnload = 'register' + x;
+  let registerActual = localStorage.getItem(registerOnload);
 
 
   var values = [],
@@ -16,53 +16,25 @@ function onloadAddInfos() {
     }
 
     for (let x = 0; x < values.length; x++) {
-      recordOnload = keys[x];
-      // console.log(recordOnload);
-      recordActual = JSON.parse(localStorage.getItem(recordOnload));
+      registerOnload = keys[x];
+      // console.log(registerOnload);
+      registerActual = JSON.parse(localStorage.getItem(registerOnload));
 
       let infosOnload = {
-            name: recordActual.name, 
-            surname: recordActual.surname, 
-            address: recordActual.address, 
-            addressAditional: recordActual.addressAditional,
-            phone: recordActual.phone, 
-            email: recordActual.email
+            name: registerActual.name, 
+            surname: registerActual.surname, 
+            address: registerActual.address, 
+            addressAditional: registerActual.addressAditional,
+            phone: registerActual.phone, 
+            email: registerActual.email
           };
-
-      addMsgTable(infosOnload, recordOnload);
+      addMsgTable(infosOnload, registerOnload);
     }
-
-    //////código bugado feioso////////
-  // while(localStorage.getItem(recordOnload)) {
-  //   while(!localStorage.getItem(recordOnload)) {
-  //     x++;
-  //     recordOnload = 'record' + x;
-  //   }
-  //   recordActual = localStorage.getItem(recordOnload);
-  //   recordActual = JSON.parse(recordActual);
-    
-  //   let infosOnload = {
-  //     name: recordActual.name, 
-  //     surname: recordActual.surname, 
-  //     address: recordActual.address, 
-  //     addressAditional: recordActual.addressAditional,
-  //     phone: recordActual.phone, 
-  //     email: recordActual.email
-  //   };
-  //   console.log(infosOnload);
-
-  //   addMsgTable(infosOnload, recordOnload)
-    
-  //   x++;
-  //   recordOnload = 'record' + x;
-  //   recordActual = localStorage.getItem(recordOnload);
-  // }
 }
 
 let infosAdded = onloadAddInfos();
 
 window.onload = infosAdded;
-
 
 function sendMsg() {
   x = 0;  
@@ -84,27 +56,27 @@ function sendMsg() {
     email: email
   };
 
-  let recordName = 'record' + x;
-  while(localStorage.getItem(recordName)) {
+  let registerName = 'register' + x;
+  while(localStorage.getItem(registerName)) {
     x++;
-    recordName = 'record' + x;
+    registerName = 'register' + x;
   }
-  // console.log('record name: ', recordName.value)
+  // console.log('register name: ', registerName.value)
 
-  localStorage.setItem(recordName, JSON.stringify(infos));
+  localStorage.setItem(registerName, JSON.stringify(infos));
 
-  addMsgTable(infos, recordName);
+  addMsgTable(infos, registerName);
 
   form.reset();
   x++;
-  edit = false;
 }
 
-function addMsgTable(infos, recordName) {
-  // console.log(infos);
+function addMsgTable(infos, registerName) {
+  console.log(registerName);
+
+  let tr = document.createElement('tr');
   const tableBody = document.getElementById('table-body');
 
-  const tr = document.createElement('tr');
 
   const tdName = document.createElement('td');
   const tdSurname = document.createElement('td');
@@ -114,12 +86,6 @@ function addMsgTable(infos, recordName) {
   const tdEmail = document.createElement('td');
   const tdBtns = document.createElement('td');
 
-  if(edit == true) {
-    console.log(infos, recordName);
-    let trEdited = document.getElementById(recordName);
-    console.log(trEdited);
-  }else {
-    
     iconRemove = document.createElement('i');
     iconRemove.setAttribute('class', 'icon fas fa-trash');
     iconRemove.setAttribute('style', 'cursor:pointer; margin-inline: .2rem;');
@@ -147,10 +113,10 @@ function addMsgTable(infos, recordName) {
     tdBtns.appendChild(iconRemove);
     tr.appendChild(tdBtns);
   
-    tr.setAttribute('id', recordName);
+    tr.setAttribute('id', registerName);
   
     tableBody.appendChild(tr);
-  }
+    edit = false;
 }
 
 function removeRegister(event) {
@@ -164,22 +130,27 @@ function editRegister(event) {
   const clickedBtn = event.target.parentNode;
   const clickedBtnNode = clickedBtn.parentNode;
   const isEditingTr = clickedBtn.parentNode;
-  edit = true;
   let form = document.getElementById('form');
+  let allValues = [];
+
+  for(i=0; i<=5; i++) {
+    allValues[i] = clickedBtnNode.children[i].innerHTML;
+    console.log(allValues[i]);
+    isEditingTr[i] = allValues[i];
+  }
   
-  form.children[1].value   = clickedBtnNode.children[0].innerHTML;
-  form.children[3].value   = clickedBtnNode.children[1].innerHTML;
-  form.children[5].value   = clickedBtnNode.children[2].innerHTML;
-  form.children[7].value   = clickedBtnNode.children[3].innerHTML;
-  form.children[9].value   = clickedBtnNode.children[4].innerHTML;
-  form.children[11].value   = clickedBtnNode.children[5].innerHTML;
+  form.children[1].value = clickedBtnNode.children[0].innerHTML;
+  form.children[3].value = clickedBtnNode.children[1].innerHTML;
+  form.children[5].value = clickedBtnNode.children[2].innerHTML;
+  form.children[7].value = clickedBtnNode.children[3].innerHTML;
+  form.children[9].value = clickedBtnNode.children[4].innerHTML;
+  form.children[11].value = clickedBtnNode.children[5].innerHTML;
   modal.style.display = "none";
 
-  console.log('pqp funcina desgraça: ', clickedBtnNode.id);
-
-  addMsgTable(clickedBtnNode, clickedBtnNode.id);
+  clickedBtnNode.remove();
+  localStorage.removeItem(clickedBtnNode.id);
+  return edit = true;
 }
-
 
 function openModal() {
   modal.style.display = "block";
@@ -193,4 +164,20 @@ window.onclick = function(event) {
 
 document.getElementById('close').onclick = function() {
   modal.style.display = "none";
+}
+
+document.getElementById('changeMode').onclick = function(event) {
+  const main = document.getElementById('main');
+  const form = document.getElementById('sec-form');
+  const btn = document.getElementById('form-btn');
+
+  if(event.target.id == 'dark') {
+    form.classList.add('colorForm2');
+    main.classList.add('bg2');
+    btn.classList.add('formBtnColor2');
+  }else {
+    form.classList.remove('colorForm2');
+    main.classList.remove('bg2');
+    btn.classList.remove('formBtnColor2');
+  }
 }
