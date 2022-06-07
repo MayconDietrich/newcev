@@ -33,9 +33,8 @@ function onloadAddInfos() {
 }
 
 let infosAdded = onloadAddInfos();
-
 window.onload = infosAdded;
-
+let z=0
 function sendMsg() {
   x = 0;  
   const form = document.getElementById('form');
@@ -55,6 +54,11 @@ function sendMsg() {
     phone: phone, 
     email: email
   };
+
+    if(name =='' && surname == '' && address == '' && addressAditional == '' && phone == '' && email == '') {
+      alert('Cadastro inválido!')
+      return;
+    }
 
   let registerName = 'register' + x;
   while(localStorage.getItem(registerName)) {
@@ -170,14 +174,20 @@ document.getElementById('changeMode').onclick = function(event) {
   const main = document.getElementById('main');
   const form = document.getElementById('sec-form');
   const btn = document.getElementById('form-btn');
+  const iconDark = document.getElementById('dark')
+  const iconLight = document.getElementById('light');
 
   if(event.target.id == 'dark') {
     form.classList.add('colorForm2');
     main.classList.add('bg2');
     btn.classList.add('formBtnColor2');
+    iconDark.classList.add('white');
+    iconsLight.classList.add('white');
   }else {
     form.classList.remove('colorForm2');
     main.classList.remove('bg2');
     btn.classList.remove('formBtnColor2');
+    iconDark.classList.remove('white');
+    iconsLight.classList.remove('white');
   }
 }
