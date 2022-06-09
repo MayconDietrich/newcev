@@ -1,42 +1,50 @@
 const modal = document.getElementById('modal');
 let edit = false;
 let allRegisters = [];
+let x = 0;
+
+if(!localStorage.getItem('registers')) {
+  localStorage.setItem('registers', allRegisters);
+}else {
+  allStorage = localStorage.getItem('registers');
+}
+
 function onloadAddInfos() {
-  x=0;
-  let registerOnload = 'register' + x;
-  let registerActual = localStorage.getItem(registerOnload);
 
+  let userKey = localStorage.getItem('registers');
+  
+    allRegisters = userKey ? JSON.parse(userKey) : [];
 
-  var values = [],
-        keys = Object.keys(localStorage),
-        i = keys.length;
-
-    while ( i-- ) {
-        values.push( localStorage.key(keys[i]) );
+    let registerActual = localStorage.getItem('registers');
+    if(registerActual != '') {
+      registerActual = JSON.parse(registerActual);
     }
-
-    for (let x = 0; x < values.length; x++) {
-      registerOnload = keys[x];
-      // console.log(registerOnload);
-      registerActual = JSON.parse(localStorage.getItem(registerOnload));
-
+    for (let x = 0; x < registerActual.length; x++) {
+      let objectActual = registerActual[x];
       let infosOnload = {
-            name: registerActual.name, 
-            surname: registerActual.surname, 
-            address: registerActual.address, 
-            addressAditional: registerActual.addressAditional,
-            phone: registerActual.phone, 
-            email: registerActual.email
+            name: objectActual.name, 
+            surname: objectActual.surname, 
+            address: objectActual.address, 
+            addressAditional: objectActual.addressAditional,
+            phone: objectActual.phone, 
+            email: objectActual.email,
+            identificator: objectActual.identificator
           };
-      addMsgTable(infosOnload, registerOnload);
+      addMsgTable(infosOnload, infosOnload.identificator);
     }
 }
 
 let infosAdded = onloadAddInfos();
 window.onload = infosAdded;
 let z=0
+
+
 function sendMsg() {
-  x = 0;  
+
+  if(edit === true) {
+    console.log('mamaozinho');
+    return edit = false;
+  }
   const form = document.getElementById('form');
 
   let name = document.getElementById('name').value;
@@ -52,31 +60,27 @@ function sendMsg() {
     address: address, 
     addressAditional: addressAditional,
     phone: phone, 
-    email: email
+    email: email,
+    identificator: x
   };
 
     if(name =='' && surname == '' && address == '' && addressAditional == '' && phone == '' && email == '') {
       alert('Cadastro inválido!')
       return;
     }
+  allRegisters.push(infos);
 
-  let registerName = 'register' + x;
-  while(localStorage.getItem(registerName)) {
-    x++;
-    registerName = 'register' + x;
-  }
-  // console.log('register name: ', registerName.value)
+  localStorage.setItem('registers', JSON.stringify(allRegisters));
+  registerId = infos.identificator;
+  addMsgTable(infos, registerId);
 
-  localStorage.setItem(registerName, JSON.stringify(infos));
-
-  addMsgTable(infos, registerName);
-
-  form.reset();
   x++;
+  form.reset();
+  return allRegisters, x;
 }
 
-function addMsgTable(infos, registerName) {
-  console.log(registerName);
+function addMsgTable(infos, registerId) {
+  console.log(registerId);
 
   let tr = document.createElement('tr');
   const tableBody = document.getElementById('table-body');
@@ -117,7 +121,7 @@ function addMsgTable(infos, registerName) {
     tdBtns.appendChild(iconRemove);
     tr.appendChild(tdBtns);
   
-    tr.setAttribute('id', registerName);
+    tr.setAttribute('id', registerId);
   
     tableBody.appendChild(tr);
     edit = false;
@@ -126,8 +130,11 @@ function addMsgTable(infos, registerName) {
 function removeRegister(event) {
   const clickedBtn = event.target.parentNode;
   const clickedBtnNode = clickedBtn.parentNode;
+  const storage = localStorage.getItem('registers');
+  allRegisters = JSON.parse(storage);
+  allRegisters.splice(clickedBtnNode.id, 1);
+  localStorage.setItem('registers', JSON.stringify(allRegisters));
   clickedBtnNode.remove();
-  localStorage.removeItem(clickedBtnNode.id);
 }
 
 function editRegister(event) {
@@ -137,22 +144,8 @@ function editRegister(event) {
   let form = document.getElementById('form');
   let allValues = [];
 
-  for(i=0; i<=5; i++) {
-    allValues[i] = clickedBtnNode.children[i].innerHTML;
-    console.log(allValues[i]);
-    isEditingTr[i] = allValues[i];
-  }
   
-  form.children[1].value = clickedBtnNode.children[0].innerHTML;
-  form.children[3].value = clickedBtnNode.children[1].innerHTML;
-  form.children[5].value = clickedBtnNode.children[2].innerHTML;
-  form.children[7].value = clickedBtnNode.children[3].innerHTML;
-  form.children[9].value = clickedBtnNode.children[4].innerHTML;
-  form.children[11].value = clickedBtnNode.children[5].innerHTML;
-  modal.style.display = "none";
 
-  clickedBtnNode.remove();
-  localStorage.removeItem(clickedBtnNode.id);
   return edit = true;
 }
 
