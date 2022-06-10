@@ -1,0 +1,16 @@
+.header {
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-title);
+  background-color: #e6e4e460;
+}
+
+.header__logo {
+  width: 10rem;
+}
+
+.header__title {
+  font-size: 2rem;
+}

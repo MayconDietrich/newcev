@@ -1,0 +1,12 @@
+:root {
+  --dark-green: #2EA36A;
+  --light-green: #82FFC3;
+  --green: #83F07F;
+  --brown: #A33222;
+  --light-red: #F07362;
+
+  --font-color: #333333;
+  --font-color-light: #E7FFFB;
+  --font-title: 'Kdam Thmor Pro', sans-serif;
+  --font-text: 'Poppins', sans-serif;
+}
