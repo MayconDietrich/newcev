@@ -13,6 +13,74 @@
   <title>Infiniti | Lista</title>
 </head>
 <body>
+
+  <header class="header">
+    <img src="./assets/img/logo.png" alt="Logo da empresa" class="header__logo">
+    <h1 class="header__title">Infiniti Concessionária</h1>
+  </header>
+
+  <main class="main">
+
+    <section class="section-table">
+      <table class="table">
+        <thead class="table__head">
+          <tr>
+            <td>Modelo</td>
+            <td>Ano</td>
+            <td>Marca</td>
+            <td>Identificador</td>
+            <td>Em estoque</td>
+            <td>Ações</td>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+      </table>
+    </section>
+
+    <section class="modal" id="modalEdit">
+      <div class="modal-content">
+        <span class="close-modal" id="close-modal">&times;</span>
+
+        <h2>Editar veículo</h2>
+        <form class="form" id="formEdit">
+          <label for="model">Modelo:</label>
+          <input required type="text" class="input" id="model-list">
+
+          <label for="year">Ano:</label>
+          <input required type="number" class="input" id="year-list">
+
+          <label for="brand">Marca:</label>
+          <input required type="text" class="input" id="brand-list">
+
+          <button type="button" class="form-btn" id="sendEdit">Enviar alterações</button>
+        </form>
+      </div>
+
+    </section>
+
+    <section class="modal modal-inventory" id="modalInventory">
+      <div class="modal-content">
+        <span class="close-modal" id="close-modal" onclick="hideModal()">&times;</span>
+        <h2>Gerenciar estoque</h2>
+        <form class="form" id="formInventory">
+          
+          <!-- <label for="inputIn"> <input type="radio" name="type" id="inputIn"> Entrada</label>
+          <label for="inputOut"> <input type="radio" name="type" id="inputOut"> Saída</label>
+           -->
+          <label for="inventory">Em estoque:</label>
+          <input required type="text" class="input" id="inventory-list">
+          <button type="button" class="form-btn" id="sendInventory">Enviar alterações</button>
+        </form>
+      </div>
+    </section>
+    
+    <a href="index.html" class= "btn-list btnList" id="btnLinkList">Resgistrar veículos</a>
+
+  </main>
+  
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main-list.js"></script>
   
 </body>
 </html>

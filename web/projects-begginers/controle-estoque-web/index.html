@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Infiniti | HOME</title>
+  <title>Infiniti | Home</title>
 </head>
 <body>
 
@@ -20,23 +20,26 @@
   </header>
 
   <main class="main">
-    <button class="typeVehicle"><i class="fa-solid fa-motorcycle"></i></button>
-    <button class="typeVehicle"><i class="fa-solid fa-car"></i></button>
     <section class="section-form">
-
+      
       <h2 class="form-title">Dados do veículo</h2>
+
+      <div class="btn-type">
+        <button type="button" class="typeVehicle"><i class="btnIcon fa-solid fa-motorcycle"></i></button>
+        <button type="button" class="typeVehicle"><i class="btnIcon fa-solid fa-car"></i></button>
+      </div>
 
       <form class="form" id="form">
         <label for="model">Modelo:</label>
-        <input type="text" class="input" id="model">
+        <input required type="text" class="input" id="model">
 
         <label for="year">Ano:</label>
-        <input type="number" class="input" id="year">
+        <input required type="number" class="input" id="year">
 
         <label for="brand">Marca:</label>
-        <input type="text" class="input" id="brand">
+        <input required type="text" class="input" id="brand">
 
-        <button type="button" class="form-btn" id="btnSend">Registrar veículo</button>
+        <button type="button" class="form-btn" id="btnSendForm">Registrar veículo</button>
       </form>
     </section>
 
@@ -44,13 +47,16 @@
       <div class="infos-div">
         <h2 class="infos-desc">Inifiniti Concessionária</h2>
         <p>Temos um total de: </p>
-        <span class="span" id="spanRegister">342</span>
+        <span class="span" id="spanRegister"></span>
         <p>veículos registrados</p>
 
-        <a class= "btn-list" id="btnLinkList">Consultar Cadastros</a>
+        <a href="list.html" class= "btn-list" id="btnLinkList">Consultar Cadastros</a>
       </div>
     </section>
   </main>
+
+  
+  <script src="assets/js/main.js"></script> 
   
 </body>
 </html>

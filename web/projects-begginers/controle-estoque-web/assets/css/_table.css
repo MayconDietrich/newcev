@@ -1,0 +1,32 @@
+.section-table {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+  text-align: center;
+}
+
+tr td {
+  border: 1px solid var(--brown);
+  height: 3rem;
+  text-align: center;
+  line-height: 3rem;
+}
+
+.table__head {
+  background-color: var(--light-red);
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+}
+
+.iconTable {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.iconTable:first-child {
+  margin-right: .4rem;
+}
