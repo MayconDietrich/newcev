@@ -2,6 +2,7 @@ const span = document.getElementById('close-modal');
 const modalEdit = document.getElementById('modalEdit');
 const modalInventory = document.getElementById('modalInventory');
 let inventory = 0;
+let spanInventory = document.getElementById('spanTotalInventory');
 let edit = false;
 dataVehicles = [];
 
@@ -16,6 +17,7 @@ if(!localStorage.getItem('registers')) {
 window.onload = function onloadAddInfos() {
   dataVehicles.forEach(vehicle => {
     inventory += parseInt(vehicle.inventory);
+    spanInventory.innerHTML = inventory;
     addDataTable(vehicle);
   });
 }
@@ -133,26 +135,38 @@ function manageInventory(event) {
   let trToManage = (event.target.parentNode).parentNode;
   modalInventory.style.display = 'block';
   let inventoryInput = document.getElementById('inventory-list');
+  let inventorySpan = document.getElementById('inventory-inform');
   dataVehicle.forEach(vehicle => {
     if(vehicle.identificator == trToManage.id) {
-      inventoryInput.value = vehicle.inventory
+      inventorySpan.innerHTML = vehicle.inventory
     }
   });
 
   document.getElementById('sendInventory').addEventListener('click', (event) => {
+    const entry = document.getElementById('entry').value;
+    const exit = document.getElementById('exit');
     dataVehicle.forEach(addInventory);
-
+    
     function addInventory(vehicle, index, dataVehicle) {
       if(vehicle.identificator == trToManage.id) {
         dataVehicle[index].inventory = inventoryInput.value
         localStorage.setItem('registers', JSON.stringify(dataVehicle));
         modalInventory.style.display = "none";
         let trManaged = document.getElementById(dataVehicle[index].identificator);
-        trManaged.children[4].innerHTML = inventoryInput.value;
-
-        if(inventoryInput.value > dataVehicle[index].identificator) {
-          return inventory = inventory - dataVehicle[index].identificator;
+        if(entry == 'on') {
+          trManaged.children[4].innerHTML = parseInt(inventoryInput.value) + parseInt(trManaged.children[4].innerHTML);
+          vehicle.inventory = trManaged.children[4].innerHTML;
+          localStorage.setItem('registers', JSON.stringify(dataVehicle));
+          inventory += parseInt(inventoryInput.value);
+          spanInventory.innerHTML = inventory;
+        }else if(exit == 'on') {
+          trManaged.children[4].innerHTML = parseInt(inventoryInput.value) - parseInt(trManaged.children[4].innerHTML);
+          vehicle.inventory = trManaged.children[4].innerHTML;
+          localStorage.setItem('registers', JSON.stringify(dataVehicle));
+          inventory += parseInt(inventoryInput.value);
+          spanInventory.innerHTML = inventory;
         }
+        
       }
     }
   });

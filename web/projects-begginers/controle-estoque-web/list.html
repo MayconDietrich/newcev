@@ -63,17 +63,30 @@
       <div class="modal-content">
         <span class="close-modal" id="close-modal" onclick="hideModal()">&times;</span>
         <h2>Gerenciar estoque</h2>
+        <div class="inform-inventory">
+          <p>Estoque</p>
+          <span class="inventory-inform" id="inventory-inform"></span>
+        </div>
         <form class="form" id="formInventory">
           
-          <!-- <label for="inputIn"> <input type="radio" name="type" id="inputIn"> Entrada</label>
-          <label for="inputOut"> <input type="radio" name="type" id="inputOut"> Saída</label>
-           -->
-          <label for="inventory">Em estoque:</label>
-          <input required type="text" class="input" id="inventory-list">
+          <div class="typeManage">
+            <h3>Selecione o tipo de movimentação</h3>
+            <label for="entry"><input type="radio" name="type" id="entry"> Entrada</label>
+            <label for="exit"><input type="radio" name="type" id="exit"> Saída</label>
+          </div>
+          
+          <label for="inventory">Digite a movimentação:</label>
+          
+          <input type="number" class="input" id="inventory-list">
           <button type="button" class="form-btn" id="sendInventory">Enviar alterações</button>
         </form>
       </div>
     </section>
+
+    <div class="totalInventory">
+      <p>Total de veículos em estoque</p>
+      <span id="spanTotalInventory" class="spanTotalInventory">0</span>
+    </div>
     
     <a href="index.html" class= "btn-list btnList" id="btnLinkList">Resgistrar veículos</a>
 
