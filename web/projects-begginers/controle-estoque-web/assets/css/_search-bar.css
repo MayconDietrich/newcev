@@ -1,0 +1,26 @@
+.search-bar {
+  display: flex;
+  height: 1rem;
+  margin: 2.5rem 2rem;
+}
+
+.iconSearch {
+  position: absolute;
+  font-size: 1.5rem;
+  color: #FFF;
+  padding: 5px;
+}
+
+.search {
+  height: 1rem;
+  border-radius: 20rem;
+  border: none;
+  background-color: var(--brown);
+  text-align: center;
+  color: #FFF;
+  font-size: 1.2rem;
+}
+
+.search:focus {
+  outline: none;
+}

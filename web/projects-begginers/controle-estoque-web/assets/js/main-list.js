@@ -94,6 +94,7 @@ function removeVechicle(event) {
       return dataVehicles;
     }
   });
+  location.reload();
 }
 
 function editVechicle(event) {
@@ -143,7 +144,7 @@ function manageInventory(event) {
   });
 
   document.getElementById('sendInventory').addEventListener('click', (event) => {
-    const entry = document.getElementById('entry').value;
+    const entry = document.getElementById('entry');
     const exit = document.getElementById('exit');
     dataVehicle.forEach(addInventory);
     
@@ -151,23 +152,36 @@ function manageInventory(event) {
       if(vehicle.identificator == trToManage.id) {
         dataVehicle[index].inventory = inventoryInput.value
         localStorage.setItem('registers', JSON.stringify(dataVehicle));
-        modalInventory.style.display = "none";
         let trManaged = document.getElementById(dataVehicle[index].identificator);
-        if(entry == 'on') {
-          trManaged.children[4].innerHTML = parseInt(inventoryInput.value) + parseInt(trManaged.children[4].innerHTML);
-          vehicle.inventory = trManaged.children[4].innerHTML;
-          localStorage.setItem('registers', JSON.stringify(dataVehicle));
-          inventory += parseInt(inventoryInput.value);
-          spanInventory.innerHTML = inventory;
-        }else if(exit == 'on') {
-          trManaged.children[4].innerHTML = parseInt(inventoryInput.value) - parseInt(trManaged.children[4].innerHTML);
-          vehicle.inventory = trManaged.children[4].innerHTML;
-          localStorage.setItem('registers', JSON.stringify(dataVehicle));
-          inventory += parseInt(inventoryInput.value);
-          spanInventory.innerHTML = inventory;
+        modalInventory.style.display = "none";
+        if(entry.checked) {
+          trManaged.children[4].innerHTML = parseInt(trManaged.children[4].innerHTML) + parseInt(inventoryInput.value);
+          if(trManaged.children[4].innerHTML > 200 || parseInt(spanInventory.innerHTML) >= 200) {
+            alert('Limite de estoque atingido');
+            trManaged.children[4].innerHTML = parseInt(trManaged.children[4].innerHTML) - parseInt(inventoryInput.value);
+          }else {
+            vehicle.inventory = trManaged.children[4].innerHTML;
+            localStorage.setItem('registers', JSON.stringify(dataVehicle));
+            inventory = inventory + parseInt(inventoryInput.value);
+            spanInventory.innerHTML = inventory;          
+          }
+        }else if(exit.checked) {
+          trManaged.children[4].innerHTML = parseInt(trManaged.children[4].innerHTML) - parseInt(inventoryInput.value);
+          if(trManaged.children[4].innerHTML < 0) {
+            alert('Não é possível deixar veículos negativos no estoque');
+            trManaged.children[4].innerHTML = parseInt(trManaged.children[4].innerHTML) + parseInt(inventoryInput.value);
+          }else {
+            vehicle.inventory = trManaged.children[4].innerHTML;
+            localStorage.setItem('registers', JSON.stringify(dataVehicle));
+            inventory = inventory - parseInt(trManaged.children[4].innerHTML);
+            spanInventory.innerHTML = inventory;
+          }
+        }else {
+          alert('Insira uma movimentação válida');
+          stop();
         }
-        
       }
+      location.reload();
     }
   });
 }
@@ -193,3 +207,14 @@ window.addEventListener('keydown', function(event) {
     modalInventory.style.display = "none";
   }
 })
+
+// let inputSearch = document.getElementById('search')
+
+// inputSearch.addEventListener('keydown', function(event) {
+//   dataVehicles = JSON.parse(localStorage.getItem('registers'));
+//   dataVehicles.filter(u => u.includes(inputSearch))
+
+
+// //   ['banan', 'akkakaa', 'mamamam'].filter(u => u.includes('na'))
+// // ['banan']
+// })
