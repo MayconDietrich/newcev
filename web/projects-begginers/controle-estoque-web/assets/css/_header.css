@@ -7,6 +7,10 @@
   background-color: #e6e4e460;
 }
 
+.headerTable {
+  margin: 0 0 1rem 0;
+}
+
 .header__logo {
   width: 5.5rem;
 }

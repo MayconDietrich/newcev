@@ -10,11 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="icon" href="./assets/img/logo.png">
   <title>Infiniti | Lista</title>
 </head>
 <body>
 
-  <header class="header">
+  <header class="header headerTable">
     <img src="./assets/img/logo.png" alt="Logo da empresa" class="header__logo">
     <h1 class="header__title">Infiniti Concessionária</h1>
   </header>
@@ -22,6 +23,14 @@
   <section class="search-bar">
     <i class="iconSearch fas fa-search"></i>
     <input type="text" class="search input" id="search">
+    
+    <div class="select-filter">
+      <select id="selectList" class="select">
+        <option>Modelo</option>
+        <option>Ano</option>
+        <option>Marca</option>
+      </select>
+    </div>
   </section>
 
   <main class="main">

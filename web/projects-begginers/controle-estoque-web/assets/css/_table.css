@@ -2,13 +2,14 @@
   width: 70%;
   margin: 0 auto;
   text-align: center;
+  padding-top: 3rem;
 }
 
 .table {
   width: 100%;
   text-align: center;
 }
-
+  
 tr td {
   border: 1px solid var(--brown);
   height: 3rem;

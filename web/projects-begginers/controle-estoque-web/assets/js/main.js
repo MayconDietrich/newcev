@@ -27,6 +27,11 @@ document.getElementById('btnSendForm').addEventListener('click', function(event)
   let year = document.getElementById('year').value;
   let brand = document.getElementById('brand').value;
 
+  if(model == '' || year == '' || brand == '') {
+    alert('Insira um veículo válido');
+    return;
+  }
+
   let formDataVehicles = {
     model: model,
     year: year,

@@ -1,3 +1,4 @@
+let inputSearch = document.getElementById('search');
 const span = document.getElementById('close-modal');
 const modalEdit = document.getElementById('modalEdit');
 const modalInventory = document.getElementById('modalInventory');
@@ -115,6 +116,11 @@ function editVechicle(event) {
   });
 
   document.getElementById('sendEdit').addEventListener('click', function(event) {
+    if(model.value == '' || year.value == '' || brand.value == '') {
+      alert('Insira uma edição válida');
+      return;
+    }
+  
     dataVehicle.forEach(addFormStorage); 
 
     function addFormStorage(vehicle, index, dataVehicle) {
@@ -150,31 +156,27 @@ function manageInventory(event) {
     
     function addInventory(vehicle, index, dataVehicle) {
       if(vehicle.identificator == trToManage.id) {
-        dataVehicle[index].inventory = inventoryInput.value
         localStorage.setItem('registers', JSON.stringify(dataVehicle));
         let trManaged = document.getElementById(dataVehicle[index].identificator);
+        let tdInventory = trManaged.children[4];
         modalInventory.style.display = "none";
         if(entry.checked) {
-          trManaged.children[4].innerHTML = parseInt(trManaged.children[4].innerHTML) + parseInt(inventoryInput.value);
-          if(trManaged.children[4].innerHTML > 200 || parseInt(spanInventory.innerHTML) >= 200) {
-            alert('Limite de estoque atingido');
-            trManaged.children[4].innerHTML = parseInt(trManaged.children[4].innerHTML) - parseInt(inventoryInput.value);
+          if(parseInt(tdInventory.innerHTML) + parseInt(inventoryInput.value) + inventory <= 200) {
+            tdInventory.innerHTML = parseInt(tdInventory.innerHTML) + parseInt(inventoryInput.value);
+            inventory = parseInt(inventory) + parseInt(tdInventory.innerHTML);
+            vehicle.inventory += parseInt(inventoryInput.value);
+            localStorage.setItem('registers', JSON.stringify(dataVehicle))
           }else {
-            vehicle.inventory = trManaged.children[4].innerHTML;
-            localStorage.setItem('registers', JSON.stringify(dataVehicle));
-            inventory = inventory + parseInt(inventoryInput.value);
-            spanInventory.innerHTML = inventory;          
+            alert('Número máximo de veículos no estoque atingido!');
           }
         }else if(exit.checked) {
-          trManaged.children[4].innerHTML = parseInt(trManaged.children[4].innerHTML) - parseInt(inventoryInput.value);
-          if(trManaged.children[4].innerHTML < 0) {
-            alert('Não é possível deixar veículos negativos no estoque');
-            trManaged.children[4].innerHTML = parseInt(trManaged.children[4].innerHTML) + parseInt(inventoryInput.value);
+          if(parseInt(tdInventory.innerHTML) - parseInt(inventoryInput.value) >= 0) {
+            tdInventory.innerHTML = parseInt(tdInventory.innerHTML) - parseInt(inventoryInput.value);
+            inventory = parseInt(inventory) - parseInt(tdInventory.innerHTML);
+            vehicle.inventory = vehicle.inventory - parseInt(inventoryInput.value);
+            localStorage.setItem('registers', JSON.stringify(dataVehicle))
           }else {
-            vehicle.inventory = trManaged.children[4].innerHTML;
-            localStorage.setItem('registers', JSON.stringify(dataVehicle));
-            inventory = inventory - parseInt(trManaged.children[4].innerHTML);
-            spanInventory.innerHTML = inventory;
+            alert('Insira uma saída válida!');
           }
         }else {
           alert('Insira uma movimentação válida');
@@ -208,13 +210,30 @@ window.addEventListener('keydown', function(event) {
   }
 })
 
-// let inputSearch = document.getElementById('search')
-
-// inputSearch.addEventListener('keydown', function(event) {
-//   dataVehicles = JSON.parse(localStorage.getItem('registers'));
-//   dataVehicles.filter(u => u.includes(inputSearch))
-
-
-// //   ['banan', 'akkakaa', 'mamamam'].filter(u => u.includes('na'))
-// // ['banan']
-// })
+inputSearch.addEventListener('keyup', function() {
+  let selectList = document.getElementById('selectList');
+  let dataVehicles = JSON.parse(localStorage.getItem('registers'));
+  const tableBody = document.getElementById('tbody');
+  let td = tableBody.lastElementChild; 
+  while (td) {
+      tableBody.removeChild(td);
+      td = tableBody.lastElementChild;
+  }
+  if(inputSearch.value == '') {
+    dataVehicles.forEach(vehicle => {
+      addDataTable(vehicle);
+    })
+  }else {
+    let searchResult = dataVehicles.filter(vehicle => vehicle.model.includes(inputSearch.value))
+    if(selectList.value == 'Modelo') {
+      searchResult = dataVehicles.filter(vehicle => vehicle.model.includes(inputSearch.value));
+    }else if(selectList.value == 'Ano') {
+      searchResult = dataVehicles.filter(vehicle => vehicle.year.includes(inputSearch.value));
+    }else {
+      searchResult = dataVehicles.filter(vehicle => vehicle.brand.includes(inputSearch.value));
+    }
+    searchResult.forEach(vehicle => {
+      addDataTable(vehicle);
+    })
+  }
+})
