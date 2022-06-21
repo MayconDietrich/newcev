@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@500&family=Indie+Flower&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Jogo da velha</title>
+</head>
+<body>
+
+  <main>
+
+    <div class="game" id="game">
+      <div class="area"></div>
+      <div class="area"></div>
+      <div class="area"></div>
+      <div class="area"></div>
+      <div class="area"></div>
+      <div class="area"></div>
+      <div class="area"></div>
+      <div class="area"></div>
+      <div class="area"></div>
+      <img src="./assets/img/velha-grid.svg" class="grid">
+    </div>
+
+    <section class="modal" id="modal">
+      <div class="modal-content">
+        <h2>Player</h2>
+        <span id="playerWin"></span>
+        <h2>ganhou!</h2>
+        <button id="btnReload">Jogar novamente</button>
+      </div>
+    </section>
+
+  </main>
+  <script src="./assets/js/scrpit.js"></script>
+</body>
+</html>

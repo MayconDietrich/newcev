@@ -1,0 +1,70 @@
+main {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Indie Flower', cursive;
+}
+
+.game {
+  background-color: none;
+  width: 39.9rem;
+  height: 39.9rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.area {
+  background-color: none;
+  width: 13.3rem;
+  height: 13.3rem;
+  cursor: pointer;
+  font-size: 15rem;
+  text-align: center;
+}
+
+.grid {
+  position: absolute;
+  z-index: -1;
+  width: 39.9rem;
+}
+
+.modal {
+  font-family: 'Anek Malayalam', sans-serif;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal-content {
+  padding: 1rem;
+  width: 35rem;
+  height: 12rem;
+  background-color: white;
+  font-size: 5rem;
+  text-align: center;
+  border: 1px solid black;
+}
+
+h2,  span  {
+  display: inline;
+  margin-top: 2rem;
+}
+
+#btnReload {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2rem;
+  cursor : pointer;
+  background: #FDFDFD;
+  border: 1px solid black;
+  padding: .5rem;
+  font-family: 'Anek Malayalam', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
