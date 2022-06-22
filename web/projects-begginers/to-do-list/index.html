@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="./assets/css/reset.css"> -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Lista de afazeres</title>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Lista de afazeres</h1>
+  </header>
+
+  <main>
+    <h2>Tarefas:</h2>
+
+    <ul id="allTasks">
+      <ul id="morning">Manhã
+        <li><input type="checkbox"> Tomar café</li>
+      </ul>
+
+      <ul id="afternoom">Tarde
+        <li><input type="checkbox"> Limpar a casa</li>
+      </ul>
+
+      <ul id="night">Noite
+        <li><input type="checkbox"> Organizar roupas</li>
+      </ul>
+    </ul>
+
+    <section>
+      <label for="task">Insira a tarefa</label>
+      <input type="text" id="task">
+        <label for="morningCheck"><input type="radio" id="morningCheck" name="type"> Manhã</label>
+        <label for="afternoomCheck"><input type="radio" id="afternoomCheck" name="type"> Tarde</label>
+        <label for="nightCheck"><input type="radio" id="nightCheck" name="type"> Noite</label>
+
+        <button id="send">Enviar</button>
+    </section>
+  </main>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
