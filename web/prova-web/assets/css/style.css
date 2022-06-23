@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,100&display=swap');
+@import url(_var.css);
+
+body {
+  font-family: 'Raleway', sans-serif;
+  color: var(--font-color);
+  background-color: var(--light-gray);
+}
+
+.header {
+  padding: 1rem;
+  color: black;
+  background-color: var(--gray);
+  display: flex;
+  align-items: center;
+}
+
+.header__icon {
+  width: 6rem;
+}
+
+.header__title {
+  font-size: 3rem;
+}
+
+.main {
+  padding-left: 1rem;
+}
+
+.add-task {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.add-task__label {
+  font-size: 1.5rem;
+}
+
+.add-task__input {
+  padding: .5rem;
+  text-align: center;
+
+  border: 1px solid rgb(133, 133, 133);
+  border-radius: 5px;
+}
+
+.add-task__btn {
+  background-color: var(--gray);
+  color: black;
+  border: 1px solid rgb(133, 133, 133);
+  border-radius: 5px;
+
+  padding: .4rem;
+  margin-left: 1rem;
+
+  cursor: pointer;
+
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  transition: .1s;
+}
+
+.add-task__btn:hover {
+  border: 1px solid black;
+  transition: .1s;
+}
+
+.fa-filter {
+  cursor: pointer;
+  margin-left: 2.5rem;
+}
+
+.sec-list {
+  margin: 2rem;
+}
+
+.risk {
+  text-decoration: line-through;
+  color: var(--light-green);
+}
+
+ul {
+  list-style: square;
+}
