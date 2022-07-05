@@ -13,6 +13,12 @@ let users = require('./users.json');
 const getUsers = (request, response) => {
   const {name, surname, age, remove} = URL.parse(request.url, true).query;
   let message = '';
+  response.writeHead(200, {'Access-Control-Allow-Origin': '*'});
+
+  // if(!name) {
+  //   response.writeHead(400, {'Access-Control-Allow-Origin': '*'});
+  //   return response.end('informa o nome cringe')
+  // }
   if(name) {
     const user = {
       name, surname, age
@@ -50,6 +56,6 @@ const getUsers = (request, response) => {
 
 const server = http.createServer(getUsers);
 
-server.listen(3001, () => {
-  console.log('listening on http://localhost:3001')
+server.listen(6924, () => {
+  console.log('listening API on http://localhost:6924')
 })
