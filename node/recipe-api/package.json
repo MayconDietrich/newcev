@@ -1,0 +1,15 @@
+{
+  "name": "recipe-api",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "dev": "npx nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

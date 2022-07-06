@@ -30,7 +30,7 @@ const getUsers = (request, response) => {
       users = users.filter(user => String(user.name) !== String(name));
 
 
-      if(!found.length) {
+    if(!found.length) {
         response.end('usuário não encontrado');
       }
     }else {
