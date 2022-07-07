@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/3f7112469b.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="icon" href="./assets/img/logo.png">
+  <title>Infiniti | Lista</title>
+</head>
+<body>
+
+  <header class="header headerTable">
+    <img src="./assets/img/logo.png" alt="Logo da empresa" class="header__logo">
+    <h1 class="header__title">Infiniti Concessionária</h1>
+  </header>
+
+  <section class="search-bar">
+    <i class="iconSearch fas fa-search"></i>
+    <input type="text" class="search input" id="search">
+    
+    <div class="select-filter">
+      <select id="selectList" class="select">
+        <option>Modelo</option>
+        <option>Ano</option>
+        <option>Marca</option>
+      </select>
+    </div>
+  </section>
+
+  <main class="main">
+
+    <section class="section-table">
+      <table class="table">
+        <thead class="table__head">
+          <tr>
+            <td>Modelo</td>
+            <td>Ano</td>
+            <td>Marca</td>
+            <td>Identificador</td>
+            <td>Em estoque</td>
+            <td>Ações</td>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+      </table>
+    </section>
+
+    <section class="modal" id="modalEdit">
+      <div class="modal-content">
+        <span class="close-modal" id="close-modal">&times;</span>
+
+        <h2>Editar veículo</h2>
+        <form class="form" id="formEdit">
+          <label for="model">Modelo:</label>
+          <input required type="text" class="input" id="model-list">
+
+          <label for="year">Ano:</label>
+          <input required type="number" class="input" id="year-list">
+
+          <label for="brand">Marca:</label>
+          <input required type="text" class="input" id="brand-list">
+
+          <button type="button" class="form-btn" id="sendEdit">Enviar alterações</button>
+        </form>
+      </div>
+
+    </section>
+
+    <section class="modal modal-inventory" id="modalInventory">
+      <div class="modal-content">
+        <span class="close-modal" id="close-modal" onclick="hideModal()">&times;</span>
+        <h2>Gerenciar estoque</h2>
+        <div class="inform-inventory">
+          <p>Estoque</p>
+          <span class="inventory-inform" id="inventory-inform"></span>
+        </div>
+        <form class="form" id="formInventory">
+          
+          <div class="typeManage">
+            <h3>Selecione o tipo de movimentação</h3>
+            <label for="entry"><input type="radio" name="type" id="entry"> Entrada</label>
+            <label for="exit"><input type="radio" name="type" id="exit"> Saída</label>
+          </div>
+          
+          <label for="inventory">Digite a movimentação:</label>
+          
+          <input type="number" class="input" id="inventory-list">
+          <button type="button" class="form-btn" id="sendInventory">Enviar alterações</button>
+        </form>
+      </div>
+    </section>
+
+    <div class="totalInventory">
+      <p>Total de veículos em estoque</p>
+      <span id="spanTotalInventory" class="spanTotalInventory">0</span>
+    </div>
+    
+    <a href="index.html" class= "btn-list btnList" id="btnLinkList">Resgistrar veículos</a>
+
+  </main>
+  
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main-list.js"></script>
+  
+</body>
+</html>

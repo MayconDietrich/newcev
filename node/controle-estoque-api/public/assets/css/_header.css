@@ -1,0 +1,32 @@
+.header {
+  height: 5.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-title);
+  background-color: #e6e4e460;
+}
+
+.headerTable {
+  margin: 0 0 1rem 0;
+}
+
+.header__logo {
+  width: 5.5rem;
+}
+
+.header__title {
+  font-size: 2rem;
+}
+
+.headerTable {
+  margin: 0 0 1rem 0;
+}
+
+.header__logo {
+  width: 5.5rem;
+}
+
+.header__title {
+  font-size: 2rem;
+}
