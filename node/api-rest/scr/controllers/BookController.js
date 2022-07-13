@@ -1,34 +1,87 @@
-exports.findAll = (request, response) => {
-  const query =  request.query;
-  console.log('Query string books', query);
-  return response.status(200).send('Acessando recurso /books method get');
+const database = require('../databases/knex');
+const logger = require('../utils/logger');
+// Criar uma  migration:
+// npx knex migrate:make nome-da-migration
+
+// Rodar uma migration (executar - up):
+// npx knex migrate:latest
+
+// Voltar uma migration (voltar - down):
+// npx knex migrate:down
+
+exports.findAll = async (request, response) => {
+  try {
+    const sql = await database.select('*').from('books');
+    return response.status(200).send({
+      books: sql
+    });
+  } catch (error) {
+    logger(error.message)
+    return response.status(500).send({ error: error?.message || e });
+  }
 }
 
-exports.create = (request, response) => {
-  console.log('Recebendo dados', request.body);
-  return response.status(200).send('Acessando recurso /books method post');
+exports.create = async (request, response) => {
+  try {
+    await database('books').insert(request.body);
+    
+    return response.status(200).send({
+      status: 'success'
+    });
+  } catch (error) {
+    logger(error.message)
+    return response.status(500).send({ error: error?.message || e });
+  }
 }
 
-exports.getById = (request, response) => {
-  const params = request.params;
-  console.log('Query params books', params);
-  return response.status(200).send(`Acessando recurso /books method get by ID ${params.id}`);
+exports.getById = async (request, response) => {
+  try {
+    const params = request.params;
+    const [book] = await database.select('*').from('books').where({id: params.id}).limit(1); 
+    
+    if(!book) {
+      return response.status(404).send(`O resgitro com id: ${params.id} não existe`);
+    }
+    console.log('livro encontrado ===', book);
+    return response.status(200).send({ status:'registro de livro encontrado:', data: book});
+  } catch (error) {
+    logger(error.message)
+    return response.status(500).send({error : error?.message || e});
+  }
 }
 
-exports.deleteById =  (request, response) => {
-  const params = request.params;
-  console.log('Query params books', params);
-  return response.status(200).send(`Acessando recurso /books method delete by ID ${params.id}`);
+exports.deleteById = async (request, response) => {
+  try {
+    const params = request.params;
+    const [book] = await database.select('*').from('books').where({id: params.id}).limit(1);  
+    
+    if(!book) {
+      return response.status(404).send(`O resgitro com id: ${params.id} não existe`);
+    }
+    console.log('autor encontrado ===', book);
+    await database.delete({name: book.name}).from('books').where({id: book.id});
+    return response.status(200).send({ status:'Registro deletado com sucesso', data: book});
+  } catch (error) {
+    logger(error.message)
+    return response.status(500).send({error : error?.message || e});
+  }
 }
 
-exports.put = (request, response) => {
-  const params = request.params;
-  console.log('Query params books', params);
-  return response.status(200).send(`Acessando recurso /books method put by ID ${params.id}`);
-}
+exports.put = async (request, response) => {
+  try {
+    const params = request.params;
+    const [previousBook] = await database.select('*').from('books').where({id: params.id}).limit(1);
+    if(!previousBook) {
+      return response.status(404).send(`O resgitro com id: ${params.id} não existe`);
+    }
+    const nextBook = request.body;
+    console.log('livro encontrado ===', previousBook);
+    console.log('book update ===', nextBook);
 
-exports.patch = (request, response) => {
-  const params = request.params;
-  console.log('Query params books', params);
-  return response.status(200).send(`Acessando recurso /books method patch by ID ${params.id}`);
+    await database.update({name: nextBook.name}).from('authors').where({id: previousBook.id});
+    return response.status(200).send({ status:'registro atualizado com sucesso', data: nextBook});
+  } catch (error) {
+    logger(error.message)
+      return response.status(500).send({error : error?.message || e});
+  }
 }
