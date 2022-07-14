@@ -11,7 +11,13 @@ const logger = require('../utils/logger');
 
 exports.findAll = async (request, response) => {
   try {
-    const sql = await database.select('*').from('books');
+    const sql = await database.select(
+      ['books.id', 'books.name', 'authors.name as authorName']
+      ).from('books').innerJoin('authors', 'authors.id', 'books.authorId');
+
+      // sql.forEach(author => {
+      //   console.log(author['author name'])
+      // })
     return response.status(200).send({
       books: sql
     });

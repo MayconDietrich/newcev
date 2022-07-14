@@ -14,8 +14,6 @@ routes.get('/authors/:id', authorController.getById);
 routes.delete('/authors/:id', authorController.deleteById);
 routes.put('/authors/:id', authorController.put);
 
-// Index Books Routes
-routes.get('/books', indexController.indexBook);
 // Bokks Routes
 routes.get('/books', booksController.findAll);
 routes.post('/books', booksController.create);
