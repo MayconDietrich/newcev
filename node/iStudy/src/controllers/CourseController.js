@@ -47,7 +47,7 @@ exports.delete = async (request, response) => {
       return response.status(404).send(`O curso com id: ${params.id} não existe`);
     }
     console.log('curso encontrado ===', course);
-    await database.delete({name: course.name}).from('courses').where({id: course.id});
+    await database.delete({title: course.title}).from('courses').where({id: course.id});
     return response.status(200).send({ status:'Curso deletado com sucesso', data: course});
   } catch (error) {
     return response.status(500).send({ error: error?.message || e });
