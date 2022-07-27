@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{fullNameParam}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{subtitleParam}}</h6>
+    <p class="card-text">{{bioParam}}</p>
+    <a href={{youtubeParam}} class="card-link">Youtube</a>
+    <a href={{googleParam}} class="card-link">Google</a>
+  </div>
+
+  <h2 *ngIf="author === 'joao'; else ehDoce">
+    Cajuzinho
+  </h2>
+  <ng-template #ehDoce>
+    <h2>Chocolate</h2>
+  </ng-template>
+  <button (click) = "addNameOnList()" class="btn btn-outline-primary m-2">Adiciona</button>
+</div>
+
