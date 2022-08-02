@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { throttleTime } from 'rxjs';
+import { CourseResponseType, CourseService } from 'src/app/course.service';
 
 @Component({
   selector: 'app-course',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
+  courseService: CourseService;//atributo da class
+  course: CourseResponseType;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(courseService: CourseService) { //parâmetro do contructor
+    this.courseService = courseService;
+    this.course = {} as CourseResponseType;
   }
 
-}
+  async ngOnInit(): Promise<void> {
+    this.course = await this.courseService.getCourseById(1);
+  };
+};
