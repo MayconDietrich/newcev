@@ -12,6 +12,9 @@ import { RoomComponent } from './components/room/room.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { VimeModule } from '@vime/angular';
+import { WelcomeToCourseComponent } from './components/welcome-to-course/welcome-to-course.component';
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { VimeModule } from '@vime/angular';
     LessonComponent,
     LogoComponent,
     RoomComponent,
-    SidebarComponent
+    SidebarComponent,
+    WelcomeToCourseComponent,
+    VideoPlayerComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

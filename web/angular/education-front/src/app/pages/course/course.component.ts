@@ -10,6 +10,7 @@ import { CourseResponseType, CourseService } from 'src/app/course.service';
 export class CourseComponent implements OnInit {
   courseService: CourseService;//atributo da class
   course: CourseResponseType;
+  lessonToShow: any;
 
   constructor(courseService: CourseService) { //parâmetro do contructor
     this.courseService = courseService;
@@ -19,4 +20,8 @@ export class CourseComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.course = await this.courseService.getCourseById(1);
   };
+
+  async setlessonToShow(lesson: any) {
+    this.lessonToShow = lesson;
+  }
 };

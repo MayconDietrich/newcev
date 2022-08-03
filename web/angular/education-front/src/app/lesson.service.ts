@@ -6,6 +6,7 @@ export type InstructorType = {
 }
 
 export type LessonResponsetype = {
+  id: number;
   title: string;
   description: string;
   videoId: string;
@@ -22,7 +23,7 @@ export class LessonService {
   async getLessonById(id: number): Promise<LessonResponsetype> {
 
     console.log('get lesson id', id);
-    const response = await fetch(`https://md-newdev.herokuapp.com/lessons/${id}`);
+    const response = await fetch(`http://localhost:4000/lessons/${id}`);
     const data = await response.json() as LessonResponsetype;
     return data;
   }

@@ -30,4 +30,12 @@ export class CourseService {
     const data = await response.json() as CourseResponseType;
     return data;
   }
+
+  async getAllCourses(): Promise<CourseResponseType> {
+    const response = await
+      fetch(`http://localhost:4000/courses`);
+
+    const data = await response.json() as CourseResponseType;
+    return data;
+  }
 };

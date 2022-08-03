@@ -2,7 +2,12 @@
   <app-header></app-header>
 
   <main class="d-flex">
-    <app-room class="flex-grow-1"></app-room>
-    <app-sidebar [lessons]="course.lessons"></app-sidebar>
+    <app-room *ngIf="lessonToShow; else showRoom" [lessonParam]="lessonToShow" class="flex-grow-1"></app-room>
+    <app-sidebar (populateLessonEvent)="setlessonToShow($event)" [lessons]="course.lessons"></app-sidebar>
   </main>
+  <ng-template #showRoom>
+    <div class="flex-grow-1">
+      <app-welcome-to-course></app-welcome-to-course>
+    </div>
+  </ng-template>
 </div>

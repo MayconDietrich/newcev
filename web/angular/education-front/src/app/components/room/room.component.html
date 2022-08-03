@@ -1,32 +1,20 @@
 <div class="flex-grow-1">
   <div class="d-flex justify-center">
     <div class="h-100 w-100 container-video">
-      <vm-player controls>
-        <vm-video cross-origin="true" poster="https://media.vimejs.com/poster.png">
-          <source data-src="https://media.vimejs.com/720p.mp4" type="video/mp4" />
-          <track
-            default
-            kind="subtitles"
-            src="https://media.vimejs.com/subs/english.vtt"
-            srclang="en"
-            label="English"
-          />
-        </vm-video>
-      </vm-player>
+      <app-video-player [videoId]="lessonParam?.videoId"></app-video-player>
     </div>
   </div>
 
   <div class="p-4 mx-auto">
     <section class="d-flex justify-content-start gap-4">
       <div class="flex-grow-1">
-        <h1>Lógica de Programação</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio est hic, officia reprehenderit nemo a nesciunt sequi ipsum odit obcaecati earum</p>
+        <h1>{{lessonParam?.title}}</h1>
+        <p>{{lessonParam?.description}}</p>
 
         <div class="d-flex align-items-center gap-2 mt-3">
-          <img class="rounded-5 border" width="50" height="50" src="https://i.pinimg.com/originals/86/08/70/860870066df05a7a29bcb5bb9ea2e9a7.jpg" alt="">
+          <img class="rounded-5 border" width="50" height="50" src="{{lessonParam?.instructor.avatarUrl}}" alt="">
           <div class="">
-            <strong class="d-block">Little</strong>
-            <p class="d-block">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae perspiciatis voluptate, atque eum iusto laboriosam quae voluptatem maiores est modi, id dicta ut velit debitis minus sit repellendus autem rerum?</p>
+            <strong class="d-block">{{lessonParam?.instructor.fullName}}</strong>
           </div>
         </div>
       </div>
