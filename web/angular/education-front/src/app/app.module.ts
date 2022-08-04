@@ -15,6 +15,9 @@ import { VimeModule } from '@vime/angular';
 import { WelcomeToCourseComponent } from './components/welcome-to-course/welcome-to-course.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CourseCardComponent } from './components/course-card/course-card.component';
+import { SafePipe } from './safe.pipe';
+
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { HomeComponent } from './pages/home/home.component';
     WelcomeToCourseComponent,
     VideoPlayerComponent,
     HomeComponent,
+    CourseCardComponent,
+    SafePipe,
+
   ],
   imports: [
     BrowserModule,

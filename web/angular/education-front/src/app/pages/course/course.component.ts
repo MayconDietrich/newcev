@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { throttleTime } from 'rxjs';
 import { CourseResponseType, CourseService } from 'src/app/course.service';
 
@@ -12,13 +13,17 @@ export class CourseComponent implements OnInit {
   course: CourseResponseType;
   lessonToShow: any;
 
-  constructor(courseService: CourseService) { //parâmetro do contructor
+  constructor(courseService: CourseService, private route: ActivatedRoute) { //parâmetro do contructor
     this.courseService = courseService;
     this.course = {} as CourseResponseType;
   }
 
   async ngOnInit(): Promise<void> {
-    this.course = await this.courseService.getCourseById(1);
+    const params = this.route.snapshot.params;
+    const courseId = params['courseId'];
+    console.log(courseId);
+
+    this.course = await this.courseService.getCourseById(courseId);
   };
 
   async setlessonToShow(lesson: any) {

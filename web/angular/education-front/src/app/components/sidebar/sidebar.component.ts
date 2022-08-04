@@ -13,7 +13,6 @@ export class SidebarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('log component room', this.lessons)
   }
 
   populateLesson(lesson: any) {

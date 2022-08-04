@@ -7,6 +7,11 @@ export type LessonType = {
   description: string;
 }
 
+export type CourseType = {
+  title: string;
+  description: string;
+}
+
 export type CourseResponseType = {
   title: string;
   description: string;
@@ -33,7 +38,7 @@ export class CourseService {
 
   async getAllCourses(): Promise<CourseResponseType> {
     const response = await
-      fetch(`http://localhost:4000/courses`);
+      fetch(`http://localhost:4000/courses/`);
 
     const data = await response.json() as CourseResponseType;
     return data;

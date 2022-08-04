@@ -1,6 +1,7 @@
-<div>
+<div class="main-div">
   <app-header></app-header>
-  <div>
-    
+  <h2 class="home-title">Cursos disponíveis na plataforma</h2>
+  <div class="mt-5 div-card d-flex flex-column">
+    <app-course-card (getCourseEvent)="populateCourse($event)" [title]="course.title" [description]="course.description" *ngFor="let course of courses" [routerLink]="['/courses', course.id]"></app-course-card>
   </div>
 </div>
